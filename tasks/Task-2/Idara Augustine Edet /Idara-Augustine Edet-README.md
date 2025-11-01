@@ -1,0 +1,31 @@
+## README File for Task 2
+In this README file, I will explain the extra details and uses of the lines of code that I understood when I did research about them. Any extra details about the lines of code that were too long to be included in the main code are discussed here 
+
+# Explanation of Numpy
+NumPy is a library used for numerical operations such as trigonometry, i.e cosine and sine, theta, etc., linear algebra, matrices and much more. There are trigonometric variables that are present in the code. It makes things easier as we don't have to predefine what these variables are in the code, reducing the workload. In computation-heavy code, you need to create maximum performance, and Numpy is much faster than normal Python math operations. The line "Import numpy as np" is used to import the library as well as assign another name to numpy, i.e. np, that is easier to use in code
+
+# Explanation of Matplotlib
+Matplotlib.pyplot is a library used for plotting and creating useful visualisations. It is useful in this code because it enables us to visualise how the changing of angles actually affects the end-effector's coordinates in space. This is the essence of forward kinematics. It also works great with numerical computing libraries like numpy, which is useful in this code.  There are also widgets included in a library called matplotlib.widgets, which includes the graphical user interface that makes the plots interactive and easier to use. The slider is imported to make visualising the change of angles easier
+
+# Extra observations
+Since we are designing the arm ourselves, we always know the length of the links. They remain constant and aren't toggled like the angles because they create a predictable movement, which allows for precise calculations.
+
+The function fk used in lines 10 - 16 is used instead of a loop for various reasons. A function runs a specific block of code and can be called numerous times within the code, which makes the code more organised and easier to maintain. The function fk takes in parameters, which in this case are theta1 and theta2. When the function is called later in the code, the values they take are called arguments. The function returns three things as tuples
+
+I noticed that a function to convert from degrees to radians was used in lines 28 and 29. This is because numpy functions work in radians and not degrees. Therefore, the conversion is necessary. Later on, the function rad2deg is used to convert back to degrees in lines 44 and 45, so it can be used for the initial values of the slider.
+
+The next section of the code defines how the plot will look. It ensures that, irrespective of the length of the links that the entire arm can be displayed. It sets the scale of the plot, sets whether or not to include gridlines, as well as defines the style and width of the gridlines. 
+
+The next section calls the function fk and assigns its return values to the base, the link and the end-effector. The base is usually found at the origin, hence being assigned to (0,0). The link is found at the first set of x and y coordinates, i.e. (x1,y1), and the end-effector is found at the second set of coordinates, i.e. (x2,y2). These three values are tuples, which is why indexing is used in lines 33 to 35 to plot the arm.
+
+## 3 link robot arm simulation using Python
+As an addition, I will be adding a 3rd link to the code and plotting it.
+This is done by adding the forward kinematics equation to the function fk and adding theta3 as a parameter. 
+I defined a new length L3 and made theta3_0
+I added link 1 to the initial arm and added it to the link line by indexing its tuple
+I added a  new slider titled 03. I created a s_theta3 and updated the update function as necessary
+When you run the code, a plot is made with 3 links, and the sliders control all three angles as desired
+
+This is the result of running the code for the robot arm with 3 links:
+<img width="886" height="639" alt="image" src="https://github.com/user-attachments/assets/0c9bd4ec-aaa2-4b66-b66c-d7238813ef99" />
+
